@@ -146,4 +146,4 @@ For those who want a more checklist type wiring list, here is the table of Ardui
 
 For those who are more visually oriented, here is a Fritzing wiring diagram:
 
-image::hardware/wiringdiagram.png
+image::hardware/wiringdiagram.png[]
