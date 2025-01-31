@@ -1,0 +1,38 @@
+## Purpose
+While I'm well aware USB-PD->DC cables exist, these are preset to a specific voltage. Using the same USB-PD with different devices needing different voltages means unplugging and plugging in a different cable each time. There has to be a better solution, and thanks to Adafruit, we can make it!
+
+
+## Components
+[cols=4*,options=header]
+|===
+| Quantity
+| Name
+| Purpose
+| Link
+| 1
+| Adafruit USB Type C Power Delivery Dummy
+| Does USB-PD heavy lifting
+| https://www.adafruit.com/product/5807
+| 1
+| Adafruit Monochrome 0.91 inch OLED Display
+| Provides feedback to the user
+| https://www.adafruit.com/product/4440
+| 4
+| Adafruit 16mm Illuminated Push Button Momentary
+| Used to choose which voltage you want
+| https://www.adafruit.com/product/1440
+| 1
+| ATmega328P based Arduino
+| The brains. Contains the code to control the USB-PD board and OLED screen
+| Your favorite source
+| 4
+| 10k ohm Resistors
+| Pulldown resistor for each switch
+| Your favorite source
+| 1
+| 330 Ohm Resistor
+| Current limiting resistor for LEDs for voltage selection
+| Your favorite source
+|===
+
+## Wiring Diagram
