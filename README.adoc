@@ -24,17 +24,16 @@ This is a work in progress, expect updates to be posted as time/testing permits
 * Parts ordering
 * Pinout and wiring confirmation
 * Switch/LED/OLED screen code validation in simulation
+* 3D case designed and parts test-fitted
 
 ### To Do
 [.list]
-* Design 3D model for case
-** Split into Top and Bottom for easy printing
 * Connect Arduino, Switches, LEDs, and OLED to confirm code functionality with hardware
 * Connect HUSB238 and confirm initialization/response
 ** Confirm continued functionality with OLED
 * Connect USB-PD source
-** Confirm each voltage change occures
-** Measure output with volt meter
+** Confirm each voltage change occurs
+** Measure output with voltmeter
 * Finalize and publish
 
 ## Components
@@ -68,6 +67,10 @@ This is a work in progress, expect updates to be posted as time/testing permits
 | 330 Ohm Resistor
 | Current limiting resistor for LEDs for indicating currently enabled voltage.
 | Favorite component source
+| 1
+| DIY OEM Type C Female Socket
+| Dedicated 5v power for control Arduino
+| https://www.amazon.com/dp/B0D5B82V6K
 |===
 
 ## Wiring Diagram
