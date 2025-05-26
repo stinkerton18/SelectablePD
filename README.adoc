@@ -56,9 +56,9 @@ This is a work in progress, expect updates to be posted as time/testing permits
 | Used to choose which voltage you want.
 | https://www.adafruit.com/product/1440
 | 1
-| ATmega328P based Arduino
+| Arduino Micro 328 (5V 16Mhz version)
 | The control brains. Contains the code to control the USB-PD board and OLED screen.
-| Favorite component source
+| https://www.sparkfun.com/arduino-pro-mini-328-5v-16mhz.html
 | 4
 | 10k Ohm Resistors
 | Pulldown resistor for each switch.
@@ -74,10 +74,12 @@ This is a work in progress, expect updates to be posted as time/testing permits
 |===
 
 ## Wiring Diagram
-For those who want a more checklist-type wiring list, here is the table of Arduino Pins to component pins/pads, if there is an inline resistor, and a handy extra space to mark off when you've completed that connection.
+I've include both a checklist-type wiring diagram, and a Fritzing diagram in an effort to reach the widest audience of other makers.
+
+Below is the table of Arduino Pins to component pins/pads, if there is an inline resistor, and a handy extra space to mark off when you've completed that connection.
 [cols="^,^,^,^",options="header"]
 |===
-| Arduino Uno Pin
+| Arduino Micro 328 Pin
 | Inline Resistor Value
 | Component Pin/Pad
 | Done?
@@ -103,50 +105,50 @@ For those who want a more checklist-type wiring list, here is the table of Ardui
 |
 | 5v (Vcc on some Arduino models)
 | 
-| Pin 2 of each Switch, VIN on OLED, V+ on HUSB238
+| Pin 2 of each Switch, VIN on OLED
 |
-| 2
-| 
-| Pin 1 of "5v" Switch
-|
-| 3
-| 
-| Pin 1 of "9v" Switch
-|
-| 4
-| 
-| Pin 1 of "12v" Switch
-|
-| 5
+| 2 (Digital Pin)
 | 
 | Pin 1 of "20v" Switch
 |
-| 9
+| 3 (Digital Pin)
+| 
+| Pin 1 of "12v" Switch
+|
+| 4 (Digital Pin)
+| 
+| Pin 1 of "9v" Switch
+|
+| 5 (Digital Pin)
+| 
+| Pin 1 of "5v" Switch
+|
+| 6 (Digital Pin)
 | 
 | Anode (positive) of "20v" indicator LED
 |
-| 10
+| 7 (Digital Pin)
 | 
 | Anode (positive) of "12v" indicator LED
 |
-| 11
+| 8 (Digital Pin)
 | 
 | Anode (positive) of "9v" indicator LED
 |
-| 12
+| 9 (Digital Pin)
 | 
 | Anode (positive) of "5v" indicator LED
 |
-| A4
+| A4 (Hardware SDA pin)
 | 
 | SDA pins on OLED and HUSB238
 |
-| A5
+| A5 (Hardware SDA pin)
 | 
 | SCL pins on OLED and HUSB238
 | 
 |===
 
-For those who are more visually oriented, here is a Fritzing wiring diagram:
+For visually oriented folks, here is a Fritzing wiring diagram with an Arduino Uno:
 
 image::hardware/wiringdiagram.png[]

@@ -33,15 +33,15 @@ int Button20v = 0;
 // This is used simply to keep a timeout for the screen and blank it to extend the life of the OLEDs
 int Timeout = 0;
 // Defining the buttons to pins on an Uno/Nano ATmega328P. Adjust to match your board/wiring
-const int ButtonPin5v = 2;
-const int ButtonPin9v = 3;
-const int ButtonPin12v = 4;
-const int ButtonPin20v = 5;
+const int ButtonPin5v = 5;
+const int ButtonPin9v = 4;
+const int ButtonPin12v = 3;
+const int ButtonPin20v = 2;
 // Define the LED/indicators for the currently enabled voltage. Adjust to match your board/wiring
-const int LED5v = 12;
-const int LED9v = 11;
-const int LED12v = 10;
-const int LED20v = 9;
+const int LED5v = 9;
+const int LED9v = 8;
+const int LED12v = 7;
+const int LED20v = 6;
 
 void setup()
 {
