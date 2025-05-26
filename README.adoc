@@ -149,6 +149,8 @@ Below is the table of Arduino Pins to component pins/pads, if there is an inline
 | 
 |===
 
-For visually oriented folks, here is a Fritzing wiring diagram:
+For visually oriented folks, here is a Fritzing wiring diagram with an Arduino Micro 328:
+The power/barrel connector is the 5V input (separate from HUB238).
+The pigtail breakout is the 5V/9V/12V/20V output from the HUB238.
 
 image::hardware/wiringdiagram.png[]
