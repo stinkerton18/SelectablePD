@@ -1,5 +1,5 @@
 ## Purpose
-While I'm well aware USB-PD->DC cables exist, these are preset to a specific voltage. Using the same USB-PD with different devices needing different voltages means unplugging and plugging in a different cable each time. There has to be a better solution, and thanks to Adafruit, we can make it!
+While USB-PD->DC cables exist, these are preset to a specific voltage. Using the same USB-PD with different devices requiring different voltages means unplugging and plugging in a different cable for each device. There has to be a better solution, and thanks to Adafruit, we can make it!
 This design uses 4 LED lit push button switches, and a 0.91 inch OLED screen, to choose from 5v (default), 9v, 12v, and 20v. When first turned on, 5v is chosen by default.
 
 ## Usage
@@ -65,19 +65,19 @@ This is a work in progress, expect updates to be posted as time/testing permits
 | Favorite component source
 | 1
 | 330 Ohm Resistor
-| Current limiting resistor for LEDs for indicating currently enabled voltage.
+| Current limiting resistor for LEDs for indicating the currently enabled voltage.
 | Favorite component source
 | 1
 | DIY OEM Type C Female Socket
-| Dedicated 5v power for control Arduino
+| Provides a dedicated 5v power for control Arduino
 | https://www.amazon.com/dp/B0D5B82V6K
 |===
 
 ## Wiring Diagram
-For those who want a more checklist type wiring list, here is the table of Arduino Pins to component pins/pads, if there is an inline resistor, and a handy extra space to mark off when you've completed that connection.
+For those who want a more checklist-type wiring list, here is the table of Arduino Pins to component pins/pads, if there is an inline resistor, and a handy extra space to mark off when you've completed that connection.
 [cols="^,^,^,^",options="header"]
 |===
-| Ardunio Uno Pin
+| Arduino Uno Pin
 | Inline Resistor Value
 | Component Pin/Pad
 | Done?
