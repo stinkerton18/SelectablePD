@@ -149,6 +149,6 @@ Below is the table of Arduino Pins to component pins/pads, if there is an inline
 | 
 |===
 
-For visually oriented folks, here is a Fritzing wiring diagram with an Arduino Uno:
+For visually oriented folks, here is a Fritzing wiring diagram:
 
 image::hardware/wiringdiagram.png[]
