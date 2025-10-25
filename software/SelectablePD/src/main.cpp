@@ -4,6 +4,7 @@ Credit to Adafruit for both their HUSB238 breakout board and 0.91" OLED screen
 HUSB238 - https://www.adafruit.com/product/5807
 OLED Screen - https://www.adafruit.com/product/4440
  **************************************************************************/
+#include <Arduino.h>
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
@@ -43,6 +44,37 @@ const int LED9v = 8;
 const int LED12v = 7;
 const int LED20v = 6;
 
+/*************************************************************** 
+This function is for updating the OLED screen with a success (S)
+and what voltage to display or if a failure (F) occurred.
+***************************************************************/
+void updateScreen(char result, String voltage) {
+  switch(result) {
+  case 'S':
+    //Display the new voltage
+    Serial.println("Updating display with new voltage");
+    display.clearDisplay();
+    display.setTextSize(2); // Draw 2X-scale text
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+    display.println("Voltage:  " + voltage);
+    display.display();
+    break;
+  case 'F':
+    //Display an error message
+    Serial.println("Updating display with error message");
+    display.clearDisplay();
+    display.setTextSize(2); // Draw 2X-scale text
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+    display.println("Unsupported");
+    display.setCursor(0, 1);
+    display.println("Voltage");
+    display.display();
+    break;
+  }
+}
+
 void setup()
 {
   pinMode(ButtonPin5v, INPUT);    //  5v button
@@ -55,7 +87,8 @@ void setup()
   pinMode(LED20v, OUTPUT);   // 20v LED/indicator
 
   // Start serial console
-  Serial.begin(115200);
+//  Serial.begin(115200);
+  Serial.begin(9600);
   while (!Serial) delay(10);
   Serial.println("Adafruit HUSB238 based selectable PD power supply starting");
 
@@ -77,7 +110,7 @@ void setup()
 
   // On start, we set the voltage to 5v and set the appropriate indicator
   updateScreen('S', "5V");
-  usbpd.selectPD(PD_SRC_5V);
+  usbpd.selectPD(PD_SRC_20V);
   usbpd.requestPD();
   digitalWrite(LED5v, HIGH);
   Serial.println("Initialization complete");
@@ -107,13 +140,18 @@ void loop()
     usbpd.requestPD();
     Serial.println("USB-PD Requested 5V");
     // Check if it was successful
-    HUSB238_VoltageSetting selectedPD = usbpd.getPDSrcVoltage();
-    Serial.println("USB-PD received " + selectedPD);
-    if (selectedPD == PD_5V) {
-      updateScreen('S', "5V");
-      Timeout=0;
-    } else {
-      updateScreen('F',"0V");
+    HUSB238_VoltageSetting srcVoltage = usbpd.getPDSrcVoltage();
+    Serial.println("USB-PD received " + srcVoltage);
+    switch (srcVoltage)
+    {
+      case PD_5V:
+        updateScreen('S', "5V");
+        Timeout=0;
+        break;
+      default:
+        updateScreen('F',"0V");
+        Timeout=0;
+        break;
     }
   }
   if (Button9v == HIGH) {
@@ -127,13 +165,18 @@ void loop()
     usbpd.requestPD();
     Serial.println("USB-PD Requested 9V");
     // Check if it was successful
-    HUSB238_VoltageSetting selectedPD = usbpd.getPDSrcVoltage();
-    Serial.println("USB-PD received " + selectedPD);
-    if (selectedPD == PD_9V) {
-      updateScreen('S', "9V");
-      Timeout=0;
-    } else {
-      updateScreen('F',"0V");
+    HUSB238_VoltageSetting srcVoltage = usbpd.getPDSrcVoltage();
+    Serial.println("USB-PD received " + srcVoltage);
+    switch (srcVoltage)
+    {
+      case PD_9V:
+        updateScreen('S', "9V");
+        Timeout=0;
+        break;
+      default:
+        updateScreen('F',"0V");
+        Timeout=0;
+        break;
     }
   }
   if (Button12v == HIGH) {
@@ -147,34 +190,44 @@ void loop()
     usbpd.requestPD();
     Serial.println("USB-PD Requested 12V");
     // Check if it was successful
-    HUSB238_VoltageSetting selectedPD = usbpd.getPDSrcVoltage();
-    Serial.println("USB-PD received " + selectedPD);
-    if (selectedPD == PD_12V) {
-      updateScreen('S', "12V");
-      Timeout=0;
-    } else {
-      updateScreen('F',"0V");
+    HUSB238_VoltageSetting srcVoltage = usbpd.getPDSrcVoltage();
+    Serial.println("USB-PD received " + srcVoltage);
+    switch (srcVoltage)
+    {
+      case PD_12V:
+        updateScreen('S', "12V");
+        Timeout=0;
+        break;
+      default:
+        updateScreen('F',"0V");
+        Timeout=0;
+        break;
     }
   }
   if (Button20v == HIGH) {
     // turn LED on
-    digitalWrite(LED20v, HIGH);
+    digitalWrite(LED12v, LOW);
     digitalWrite(LED5v, LOW);
     digitalWrite(LED9v, LOW);
-    digitalWrite(LED12v, LOW);
+    digitalWrite(LED20v, HIGH);
     // Set the USB-PD board to 20V
     usbpd.selectPD(PD_SRC_20V);
     usbpd.requestPD();
     Serial.println("USB-PD Requested 20V");
     // Check if it was successful
-    HUSB238_VoltageSetting selectedPD = usbpd.getPDSrcVoltage();
-    Serial.println("USB-PD received " + selectedPD);
-    if (selectedPD == PD_20V) {
-      updateScreen('S', "20V");
-      Timeout=0;
-    } else {
-      updateScreen('F',"0V");
-    }
+  HUSB238_VoltageSetting srcVoltage = usbpd.getPDSrcVoltage();
+    Serial.println("USB-PD received " + srcVoltage);
+    switch (srcVoltage)
+    {
+      case PD_20V:
+        updateScreen('S', "20V");
+        Timeout=0;
+        break;
+      default:
+        updateScreen('F',"0V");
+        Timeout=0;
+        break;
+    }    
   }
   
   if (Timeout <= 1000) {
@@ -182,35 +235,5 @@ void loop()
   } else {
     // We clear the display to help extend the life of the OLED screen
     display.clearDisplay();
-  }
-}
-
-/*************************************************************** 
-This function is for updating the OLED screen with a success (S)
-and what voltage to display or if a failure (F) occurred.
-***************************************************************/
-void updateScreen(char result, String voltage) {
-  switch(result) {
-  case 'S':
-    //Display the new voltage
-    Serial.println("Updating display with new voltage");
-    display.clearDisplay();
-    display.setTextSize(2); // Draw 2X-scale text
-    display.setTextColor(SSD1306_WHITE);
-    display.setCursor(0, 0);
-    display.println("Voltage:  " + voltage);
-    display.display();
-    break;
-  case 'F':
-    //Display an error message
-    Serial.println("Updating display with error message");
-    display.clearDisplay();
-    display.setTextSize(2); // Draw 2X-scale text
-    display.setTextColor(SSD1306_WHITE);
-    display.setCursor(0, 0);
-    display.println("Unsupported");
-    display.setCursor(0, 1);
-    display.println("Voltage");
-    display.display();
   }
 }
