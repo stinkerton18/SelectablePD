@@ -14,27 +14,7 @@ The unit requires the following power inputs:
 Pressing a specific voltage pushbutton results in that switch lighting up and the OLED screen displaying the currently operating voltage. If the selected voltage cannot be set, either due to a communications error or the USB-PD power source not supporting that voltage, an error will be displayed and the previously working voltage left enabled.
 
 ## Status
-This is a work in progress, expect updates to be posted as time/testing permits
-
-### Done
-[.list]
-* Component List
-* Pin count confirmation
-* Arduino microcontroller restrictions confirmed
-* Parts ordering
-* Pinout and wiring confirmation
-* Switch/LED/OLED screen code validation in simulation
-* 3D case designed and parts test-fitted
-
-### To Do
-[.list]
-* Connect Arduino, Switches, LEDs, and OLED to confirm code functionality with hardware
-* Connect HUSB238 and confirm initialization/response
-** Confirm continued functionality with OLED
-* Connect USB-PD source
-** Confirm each voltage change occurs
-** Measure output with voltmeter
-* Finalize and publish
+Tested, validated with a volt meter, ready for prime time!
 
 ## Components
 [cols="^,<,<,^",options=header]
@@ -64,7 +44,7 @@ This is a work in progress, expect updates to be posted as time/testing permits
 | Pulldown resistor for each switch.
 | Favorite component source
 | 1
-| 330 Ohm Resistor
+| 330 (or 470) Ohm Resistor
 | Current limiting resistor for LEDs for indicating the currently enabled voltage.
 | Favorite component source
 | 1
@@ -84,7 +64,7 @@ Below is the table of Arduino Pins to component pins/pads, if there is an inline
 | Component Pin/Pad
 | Done?
 | Ground
-| 330 Ohm
+| 330 Ohm (or 470 Ohm)
 | Cathode (negative) of each LED. All LEDs can be tied together and linked to one resistor
 |
 | Ground
