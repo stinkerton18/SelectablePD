@@ -2,6 +2,9 @@
 While USB-PD->DC cables exist, these are preset to a specific voltage. Using the same USB-PD with different devices requiring different voltages means unplugging and plugging in a different cable for each device. There has to be a better solution, and thanks to Adafruit, we can make it!
 This design uses 4 LED lit push button switches, and a 0.91 inch OLED screen, to choose from 5v (default), 9v, 12v, and 20v. When first turned on, 5v is chosen by default.
 
+image::hardware/Functionality.gif[]
+
+
 ## Usage
 The unit requires the following power inputs:
 [cols=2*,options=]
@@ -134,3 +137,8 @@ The power/barrel connector is the 5V input (separate from HUB238).
 The pigtail breakout is the 5V/9V/12V/20V output from the HUB238.
 
 image::hardware/wiringdiagram.png[]
+
+
+It is possible to tie common lines together. Here's the assembly I did  on mine in the GIF above:
+
+image::hardware/Internal_Assembly.jpeg[]
